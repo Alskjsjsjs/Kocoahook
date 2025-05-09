@@ -49,3 +49,19 @@ createToggle("FlyHack", true, 90)
 createToggle("SilentAim", true, 130)
 createToggle("FullBright", true, 170)
 createToggle("AutoReload", true, 210)
+
+-- Make the frame draggable
+mainFrame.Active = true
+mainFrame.Draggable = true
+
+-- Create toggle button to show/hide the GUI
+local toggleKey = Enum.KeyCode.RightShift
+local UIS = game:GetService("UserInputService")
+
+local guiVisible = true
+UIS.InputBegan:Connect(function(input, gameProcessed)
+    if not gameProcessed and input.KeyCode == toggleKey then
+        guiVisible = not guiVisible
+        screenGui.Enabled = guiVisible
+    end
+end)
